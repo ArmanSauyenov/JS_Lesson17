@@ -1,0 +1,65 @@
+﻿<!--Практика:
+1. Создать первое приложение на Vue, добавить текстовый блок и input.
+    Сделать блок с текстом "Вы ввели: текст",
+    где "текст" будет меняться в зависимости от введенного в input текста
+2. Сделать два input поля для ввода текста и две кнопки.
+    При вводе текста в первое поле и нажатии первой кнопки, во второй input попадает
+    значение первого но в обратном направление (если 123 ввели, то 321).
+    При вводе во второе поле и нажатии на вторую кнопку, происходит тоже самое в обратном направлении.
+    в первое поле попадает инвертированное значение второго.
+
+3. Сделать динамический список ul>li, сделать поле ввода и кнопку, для добавления элементов в этот список.
+    В случае, если в поле ввода ввели текст "hide", то вместо hide показывается текст "- HIDDEN -"
+    Для скрытого пункта цвет текста должен быть не черным а серым-->
+
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .span123 {
+        color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!--1)-->
+    <div id="app">
+        <span>Вы ввели: </span>
+        {{ text }}
+        <br>
+        <br>
+        <input v-model="text">
+    </div>
+
+    <!--2)-->
+    <br>
+    <div id="app2">
+        <input v-model="text1">
+        <button @click="add12">Button 1</button>
+        <br>
+        <input v-model="text2">
+        <button @click="add21">Button 2</button>
+    </div>
+
+    <!--3)-->
+    <div id="app3">
+        <ul>
+            <li v-for="todo in todos">
+                <span v-if="todo.text == 'hide'" class="span123">- HIDDEN -</span>
+                <span v-else>{{ todo.text }}</span>
+            </li>
+        </ul>
+
+        <input v-model="text">
+        <button @click="add">Добавить</button>
+        <br><br>
+    </div>
+
+        <script src="vue.js"></script>
+        <script src="JavaScript1.js"></script>
+</body>
+</html>
